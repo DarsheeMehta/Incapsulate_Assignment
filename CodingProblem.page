@@ -1,0 +1,28 @@
+<apex:page controller="CodingProblem_Controller">
+	<apex:form>
+		<apex:pageBlock>
+			<apex:pageBlockSection columns="1">
+				<apex:pageBlockSectionItem >
+			  		<apex:outputLabel value="Input:"/>
+				  	<apex:inputText value="{!userInput}"/>
+			  	</apex:pageBlockSectionItem>
+
+			  	<apex:pageBlockSectionItem>
+			  		<apex:outputLabel/>
+			  		<apex:commandButton value="Get Value" action="{!getFood}" reRender="output,error"/>
+			  	</apex:pageBlockSectionItem>
+			</apex:pageBlockSection>
+			  	
+			<apex:pageBlockSection columns="1" id="output">
+				<apex:pageBlockSectionItem rendered="{!IF(AND(outputValue != '', !pageMessage), true, false)}">
+				  	<apex:outputLabel value="Output:"/>
+				  	<apex:outputText value="{!outputValue}"/>
+			  	</apex:pageBlockSectionItem>
+		  	</apex:pageBlockSection>
+	  	</apex:pageBlock>
+
+	  	<apex:outputPanel id="error">
+	  		<apex:pageMessages/>
+	  	</apex:outputPanel>
+	</apex:form>
+</apex:page>
